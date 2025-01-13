@@ -74,7 +74,6 @@ export const Dropdown: React.FC<Props> = ({
   return (
     <div
       className={classNames('dropdown', { 'is-active': hasFocus })}
-      style={{ maxHeight: '200px', overflowX: 'auto' }}
       ref={dropdown}
     >
       <div className="dropdown-trigger">
@@ -89,7 +88,12 @@ export const Dropdown: React.FC<Props> = ({
         />
       </div>
 
-      <div className="dropdown-menu" role="menu" data-cy="suggestions-list">
+      <div
+        className="dropdown-menu"
+        role="menu"
+        data-cy="suggestions-list"
+        style={{ maxHeight: '200px', overflowX: 'auto' }}
+      >
         {filteredPeople.length !== 0 ? (
           <div className="dropdown-content">
             {filteredPeople.map(person => (
