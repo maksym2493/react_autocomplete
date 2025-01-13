@@ -5,6 +5,7 @@ import React, {
   useRef,
   useState,
 } from 'react';
+
 import classNames from 'classnames';
 import debounce from 'lodash.debounce';
 
@@ -25,6 +26,7 @@ export const Dropdown: React.FC<Props> = ({
   const [hasFocus, setHasFocus] = useState(false);
 
   const [appliedText, setAppliedText] = useState('');
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const applyText = useCallback(debounce(setAppliedText, delay), []);
 
   const filteredPeople = useMemo(() => {
@@ -64,6 +66,7 @@ export const Dropdown: React.FC<Props> = ({
   const handleSelect = (person: Person) => {
     onSelect(person);
     setText(person.name);
+    setAppliedText(person.name);
 
     setHasFocus(false);
   };
@@ -71,6 +74,7 @@ export const Dropdown: React.FC<Props> = ({
   return (
     <div
       className={classNames('dropdown', { 'is-active': hasFocus })}
+      style={{ maxHeight: '200px', overflowX: 'auto' }}
       ref={dropdown}
     >
       <div className="dropdown-trigger">
