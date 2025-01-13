@@ -58,7 +58,7 @@ export const Dropdown: React.FC<Props> = ({
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = event.target.value;
 
-    onSelect(null);
+    onSelect(null); // reset selectedPerson after first change
     setText(newValue);
     applyText(newValue.trim());
   };
